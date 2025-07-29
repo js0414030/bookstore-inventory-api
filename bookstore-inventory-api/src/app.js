@@ -20,8 +20,8 @@ app.use(helmet());
 
 // Whitelist allowed origins for CORS (localdev + production frontend URL)
 const allowedOrigins = [
-    'http://localhost:3000',           // React dev frontend
-    'https://your-frontend.vercel.app' // Replace with your actual Vercel deployed frontend URL
+    'https://bookstore-inventory-api.vercel.app',
+    'http://localhost:3000'
 ];
 
 app.use(
