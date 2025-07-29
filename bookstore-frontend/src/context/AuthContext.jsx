@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState, useCallback } from 'react';
 
 const AuthContext = createContext();
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://bookstore-inventory-b8xo.onrender.com/api';
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);

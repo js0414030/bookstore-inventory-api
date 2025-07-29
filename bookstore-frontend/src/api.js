@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api/books';
+const API_BASE = 'https://bookstore-inventory-b8xo.onrender.com/api/books';
 
 function getAuthHeaders(token) {
     return token

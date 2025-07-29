@@ -1,3 +1,5 @@
+// app.js (backend entrypoint)
+
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -14,22 +16,38 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(helmet());
+
+// Whitelist allowed origins for CORS (localdev + production frontend URL)
+const allowedOrigins = [
+    'http://localhost:3000',           // React dev frontend
+    'https://your-frontend.vercel.app' // Replace with your actual Vercel deployed frontend URL
+];
 
 app.use(
     cors({
-        origin: process.env.CLIENT_URL || 'http://localhost:3000',
+        origin: (origin, callback) => {
+            // Allow requests with no origin (like curl, Postman)
+            if (!origin) return callback(null, true);
+            if (allowedOrigins.indexOf(origin) === -1) {
+                return callback(new Error('CORS policy: This origin is not allowed'), false);
+            }
+            return callback(null, true);
+        },
         credentials: true,
     })
 );
-app.use(helmet());
 
+// Mount routes
 app.use('/api/books', bookRoutes);
 app.use('/api/auth', authRoutes);
 
+// 404 handler for unknown routes
 app.use((req, res, next) => {
     res.status(404).json({ message: 'Resource not found' });
 });
 
+// Centralized error handler middleware
 app.use(errorHandler);
 
 module.exports = app;

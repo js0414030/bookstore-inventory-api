@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api'; // Adjust to your backend URL
+const API_BASE = 'https://bookstore-inventory-b8xo.onrender.com/api'; // Adjust to your backend URL
 
 export async function login(email, password) {
     const res = await fetch(`${API_BASE}/auth/login`, {
