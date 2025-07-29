@@ -1,0 +1,21 @@
+.filterBar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.input {
+    flex: 1 1 200px;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    border: 1.5px solid #aaa;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+}
